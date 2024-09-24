@@ -10,9 +10,11 @@ type Person struct{
 	Id  string   `json:"id,omitempty"`
 	Name string `json:"nome"`
 	Age string `json:"idade"`
-    Adress string `json:"endereço`
+    Address string `json:"endereço"`
+    Flavor string `json:"sabor"`
 
 }
+
 var people []Person
 
 func main() {
@@ -65,7 +67,7 @@ func DeletePerson(w http.ResponseWriter, r *http.Request) {
 
 func UpdatePerson(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type", "application/json")          
-    params := mux.Vars(r)
+    params := mux.Vars(r)           
     for index, item := range people {
         if item.Id == params["id"] {
             people = append(people[:index], people[index+1:]...)
